@@ -20,8 +20,11 @@ func main() {
 	check(err)
 
 	reader := bufio.NewReader(s)
+	// discard up to first newline
+	line, err := reader.ReadString('\n')
+	check(err)
 	for {
-		line, err := reader.ReadString('\n')
+		line, err = reader.ReadString('\n')
 		check(err)
 		log.Print(line)
 	}
